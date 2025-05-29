@@ -37,5 +37,13 @@
   "create.goggle.stress_impact": "基础应力需求: %s SU",
   "create.tooltip.separator": " ",
   "create.goggle.soul_condenser.status.no_recipe_for_input": "当前输入无匹配配方",
-  "create.goggle.soul_condenser.status.no_input": "缺少输入"
+  "create.goggle.soul_condenser.status.no_input": "缺少输入",
+
+  "createnetherindustry.ponder.tag.nether_industry": "下界工业",
+  "createnetherindustry.ponder.tag.nether_industry.description": "在下界建造你的产线",
+  "createnetherindustry.ponder.condenser.header": "流体转化",
+  "createnetherindustry.ponder.condenser.text_1": "凝集器是一种可以转化液体的机械元件",
+  "createnetherindustry.ponder.condenser.text_2": "从侧面接入应力……",
+  "createnetherindustry.ponder.condenser.text_3": "原料从下方通入，成品从上方产出",
+  "createnetherindustry.ponder.condenser.text_4": "你也可以通过数据包自定义流体转化的配方"
 }

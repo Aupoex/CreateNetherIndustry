@@ -21,7 +21,7 @@ public class CNIRecipeTypeInfo<T extends Recipe<?>> implements IRecipeTypeInfo {
 
     @Override
     public ResourceLocation getId() {
-        return serializer.getId(); // 或者 type.getId()，它们应该是一样的
+        return serializer.getId();
     }
 
     @Override

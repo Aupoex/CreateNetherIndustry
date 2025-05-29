@@ -4,8 +4,10 @@ import com.tterrag.registrate.providers.RegistrateDataProvider;
 import com.upo.createnetherindustry.content.recipes.condenser.CondenserRecipeSerializers;
 import com.upo.createnetherindustry.content.recipes.condenser.CondenserRecipeType;
 import com.upo.createnetherindustry.data.*;
+import com.upo.createnetherindustry.ponder.CNIPonderPlugin;
 import com.upo.createnetherindustry.registry.*;
 import com.simibubi.create.foundation.data.CreateRegistrate;
+import net.createmod.ponder.foundation.PonderIndex;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
@@ -72,7 +74,7 @@ public class CreateNetherIndustry
             ItemBlockRenderTypes.setRenderLayer(CNIBlocks.SOUL_STRIPPING_MEDIUM.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(CNIBlocks.BLAZE_TWIG_CROP.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(CNIBlocks.SOUL_CONDENSER.get(), RenderType.cutoutMipped());
-
+            PonderIndex.addPlugin(new CNIPonderPlugin());
             CNIFluids.registerFluidInteractions();
         });
     }

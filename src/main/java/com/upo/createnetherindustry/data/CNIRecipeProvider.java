@@ -254,18 +254,5 @@ public class CNIRecipeProvider extends RecipeProvider {
                 .build(recipeOutput);
     }
 
-
-
-    // 你可以为其他Create加工类型添加类似的辅助方法：
-    // 例如，压制 (Pressing)
-    // import com.simibubi.create.content.kinetics.press.PressingRecipe;
-    // protected ProcessingRecipeBuilder<PressingRecipe> createPressingRecipe(String name, UnaryOperator<ProcessingRecipeBuilder<PressingRecipe>> transform) {
-    //     return transform.apply(
-    //         new ProcessingRecipeBuilder<>(PressingRecipe::new, ResourceLocation.fromNamespaceAndPath(CNICommon.MOD_ID, name))
-    //     );
-    // }
-
-
-
 }
 

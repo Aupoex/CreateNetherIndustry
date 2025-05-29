@@ -29,8 +29,8 @@ import java.util.Optional;
 
 public class SoulCondenserBlockEntity extends KineticBlockEntity implements IHaveGoggleInformation {
 
-    private static final int INPUT_TANK_CAPACITY = 2000;
-    private static final int OUTPUT_TANK_CAPACITY = 2000;
+    private static final int INPUT_TANK_CAPACITY = 4000;
+    private static final int OUTPUT_TANK_CAPACITY = 4000;
     private static final int DEFAULT_PROCESSING_TIME_FALLBACK = 5120;
 
     protected SmartFluidTankBehaviour inputTankBehaviour;

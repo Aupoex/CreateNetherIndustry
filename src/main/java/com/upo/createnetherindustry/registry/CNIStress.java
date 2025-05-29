@@ -5,9 +5,9 @@ import net.minecraft.world.level.block.Block;
 
 public class CNIStress {
 
-    public static void registerAllStressValues() { // 方法名可以自定义
+    public static void registerAllStressValues() {
 
-        Block soulCondenserInstance = CNIBlocks.SOUL_CONDENSER.get(); // 示例路径
+        Block soulCondenserInstance = CNIBlocks.SOUL_CONDENSER.get();
         double stressImpact = 8.0;
         BlockStressValues.IMPACTS.register(soulCondenserInstance, () -> stressImpact);
 

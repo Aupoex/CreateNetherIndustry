@@ -17,7 +17,7 @@ public class SoulStrippingRecipe extends CNIRecipe<SingleRecipeInput, SoulStripp
 
     @Override
     protected int getMaxOutputCount() {
-        return 2; // 根据你的需求，一个输入对应两个输出
+        return 2;
     }
 
     @Override
