@@ -33,6 +33,18 @@ repositories {
         url = "https://modmaven.dev"
     }
 
+
+
+
+
+    flatDir {
+        dirs 'libs' // 告诉 Gradle 在 'libs' 文件夹中查找依赖
+    }
+
+
+
+
+
     mavenLocal()
 }
 

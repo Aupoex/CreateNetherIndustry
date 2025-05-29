@@ -1,0 +1,74 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "minecraft:bone"
+  },
+  "loops": 3,
+  "results": [
+    {
+      "chance": 0.18,
+      "id": "minecraft:skeleton_skull"
+    },
+    {
+      "chance": 0.4,
+      "id": "minecraft:bone"
+    },
+    {
+      "chance": 0.42,
+      "id": "minecraft:bone_meal"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "createnetherindustry:incomplete_skeleton_skull"
+        },
+        {
+          "item": "minecraft:bone_block"
+        }
+      ],
+      "results": [
+        {
+          "id": "createnetherindustry:incomplete_skeleton_skull"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "createnetherindustry:incomplete_skeleton_skull"
+        },
+        {
+          "item": "minecraft:bone_block"
+        }
+      ],
+      "results": [
+        {
+          "id": "createnetherindustry:incomplete_skeleton_skull"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "createnetherindustry:incomplete_skeleton_skull"
+        },
+        {
+          "item": "minecraft:bone_meal"
+        }
+      ],
+      "results": [
+        {
+          "id": "createnetherindustry:incomplete_skeleton_skull"
+        }
+      ]
+    }
+  ],
+  "transitional_item": {
+    "id": "createnetherindustry:incomplete_skeleton_skull"
+  }
+}

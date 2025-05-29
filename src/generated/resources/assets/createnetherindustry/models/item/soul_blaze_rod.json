@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "createnetherindustry:item/soul_blaze_rod"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "createnetherindustry:soul_stripping",
+  "ingredients": [
+    {
+      "item": "minecraft:rotten_flesh"
+    }
+  ],
+  "processingTime": 200,
+  "results": [
+    {
+      "id": "minecraft:leather"
+    },
+    {
+      "chance": 0.2,
+      "id": "createnetherindustry:soul_item"
+    }
+  ]
+}

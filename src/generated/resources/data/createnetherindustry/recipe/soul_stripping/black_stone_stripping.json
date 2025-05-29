@@ -1,0 +1,18 @@
+{
+  "type": "createnetherindustry:soul_stripping",
+  "ingredients": [
+    {
+      "item": "minecraft:blackstone"
+    }
+  ],
+  "processingTime": 200,
+  "results": [
+    {
+      "id": "minecraft:cobblestone"
+    },
+    {
+      "chance": 0.5,
+      "id": "createnetherindustry:soul_item"
+    }
+  ]
+}

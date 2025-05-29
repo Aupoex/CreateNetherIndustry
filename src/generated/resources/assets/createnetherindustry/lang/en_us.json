@@ -1,0 +1,23 @@
+{
+  "block.createnetherindustry.blaze_twig_crop": "Blaze Twig Crop",
+  "block.createnetherindustry.crimson_nylium_farmland": "Crimson Nylium Farmland",
+  "block.createnetherindustry.golden_carrot_crop": "Golden Carrot Crop",
+  "block.createnetherindustry.soul_condenser": "魂灵凝集器",
+  "block.createnetherindustry.soul_stripping_block": "Soul Stripping Block",
+  "block.createnetherindustry.thick_soul_syrup": "Thick Soul Syrup",
+  "block.createnetherindustry.thin_soul_fluid": "Thin Soul Fluid",
+  "block.createnetherindustry.warped_nylium_farmland": "Warped Nylium Farmland",
+  "fluid.createnetherindustry.thick_soul_syrup": "浓稠魂灵浆",
+  "fluid.createnetherindustry.thin_soul_fluid": "稀薄魂灵液",
+  "item.createnetherindustry.blaze_fruit": "烈焰果实",
+  "item.createnetherindustry.blaze_twig": "烈焰枝条",
+  "item.createnetherindustry.dead_blaze_rod": "失活烈焰棒",
+  "item.createnetherindustry.incomplete_skeleton_skull": "未完成的骷髅头颅",
+  "item.createnetherindustry.mysterious_ancient_mechanism": "神秘远古构件",
+  "item.createnetherindustry.soul_blaze_rod": "萦魂烈焰棒",
+  "item.createnetherindustry.soul_bottle_item": "稀薄魂灵之瓶",
+  "item.createnetherindustry.soul_item": "魂灵颗粒",
+  "item.createnetherindustry.thick_soul_bottle_item": "浓稠魂灵之瓶",
+  "item.createnetherindustry.thick_soul_syrup_bucket": "Thick Soul Syrup Bucket",
+  "item.createnetherindustry.thin_soul_fluid_bucket": "Thin Soul Fluid Bucket"
+}

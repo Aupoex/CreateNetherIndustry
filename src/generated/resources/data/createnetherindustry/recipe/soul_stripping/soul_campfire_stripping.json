@@ -1,0 +1,17 @@
+{
+  "type": "createnetherindustry:soul_stripping",
+  "ingredients": [
+    {
+      "item": "minecraft:soul_campfire"
+    }
+  ],
+  "processingTime": 200,
+  "results": [
+    {
+      "id": "minecraft:campfire"
+    },
+    {
+      "id": "createnetherindustry:soul_item"
+    }
+  ]
+}

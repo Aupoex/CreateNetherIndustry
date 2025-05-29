@@ -1,0 +1,17 @@
+{
+  "type": "createnetherindustry:soul_stripping",
+  "ingredients": [
+    {
+      "item": "minecraft:soul_torch"
+    }
+  ],
+  "processingTime": 200,
+  "results": [
+    {
+      "id": "minecraft:torch"
+    },
+    {
+      "id": "createnetherindustry:soul_item"
+    }
+  ]
+}

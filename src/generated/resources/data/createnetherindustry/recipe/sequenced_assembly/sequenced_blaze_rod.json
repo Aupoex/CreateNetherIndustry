@@ -1,0 +1,72 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "minecraft:bone"
+  },
+  "loops": 2,
+  "results": [
+    {
+      "chance": 0.8,
+      "id": "minecraft:blaze_rod"
+    },
+    {
+      "chance": 0.2,
+      "id": "minecraft:blaze_powder"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "createnetherindustry:dead_blaze_rod"
+        },
+        {
+          "item": "minecraft:blaze_powder"
+        }
+      ],
+      "results": [
+        {
+          "id": "createnetherindustry:dead_blaze_rod"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "createnetherindustry:dead_blaze_rod"
+        },
+        {
+          "item": "minecraft:blaze_powder"
+        }
+      ],
+      "results": [
+        {
+          "id": "createnetherindustry:dead_blaze_rod"
+        }
+      ]
+    },
+    {
+      "type": "create:filling",
+      "ingredients": [
+        {
+          "item": "createnetherindustry:dead_blaze_rod"
+        },
+        {
+          "type": "fluid_stack",
+          "amount": 500,
+          "fluid": "minecraft:lava"
+        }
+      ],
+      "results": [
+        {
+          "id": "createnetherindustry:dead_blaze_rod"
+        }
+      ]
+    }
+  ],
+  "transitional_item": {
+    "id": "createnetherindustry:dead_blaze_rod"
+  }
+}

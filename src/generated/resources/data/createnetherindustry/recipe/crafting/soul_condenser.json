@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "create:cogwheel"
+    },
+    "G": {
+      "tag": "c:glass_blocks"
+    },
+    "P": {
+      "item": "minecraft:pitcher_plant"
+    },
+    "T": {
+      "item": "create:copper_casing"
+    }
+  },
+  "pattern": [
+    " P ",
+    "GCG",
+    "TTT"
+  ],
+  "result": {
+    "count": 1,
+    "id": "createnetherindustry:soul_condenser"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "create:filling",
+  "ingredients": [
+    {
+      "item": "minecraft:obsidian"
+    },
+    {
+      "type": "fluid_stack",
+      "amount": 250,
+      "fluid": "createnetherindustry:thick_soul_syrup"
+    }
+  ],
+  "processing_time": 100,
+  "results": [
+    {
+      "id": "minecraft:crying_obsidian"
+    }
+  ]
+}

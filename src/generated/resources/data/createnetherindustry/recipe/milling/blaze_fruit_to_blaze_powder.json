@@ -1,0 +1,18 @@
+{
+  "type": "create:milling",
+  "ingredients": [
+    {
+      "item": "createnetherindustry:blaze_fruit"
+    }
+  ],
+  "results": [
+    {
+      "count": 3,
+      "id": "minecraft:blaze_powder"
+    },
+    {
+      "chance": 0.2,
+      "id": "minecraft:blaze_powder"
+    }
+  ]
+}

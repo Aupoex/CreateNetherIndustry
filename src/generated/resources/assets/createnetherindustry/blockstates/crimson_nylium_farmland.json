@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "moisture=0": {
+      "model": "createnetherindustry:block/nylium_farmland/crimson_nylium_farmland_dry"
+    },
+    "moisture=1": {
+      "model": "createnetherindustry:block/nylium_farmland/crimson_nylium_farmland_dry"
+    },
+    "moisture=2": {
+      "model": "createnetherindustry:block/nylium_farmland/crimson_nylium_farmland_dry"
+    },
+    "moisture=3": {
+      "model": "createnetherindustry:block/nylium_farmland/crimson_nylium_farmland_dry"
+    },
+    "moisture=4": {
+      "model": "createnetherindustry:block/nylium_farmland/crimson_nylium_farmland_dry"
+    },
+    "moisture=5": {
+      "model": "createnetherindustry:block/nylium_farmland/crimson_nylium_farmland_dry"
+    },
+    "moisture=6": {
+      "model": "createnetherindustry:block/nylium_farmland/crimson_nylium_farmland_dry"
+    },
+    "moisture=7": {
+      "model": "createnetherindustry:block/nylium_farmland/crimson_nylium_farmland_moist"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "create:filling",
+  "ingredients": [
+    {
+      "item": "minecraft:blaze_rod"
+    },
+    {
+      "type": "fluid_stack",
+      "amount": 250,
+      "fluid": "createnetherindustry:thick_soul_syrup"
+    }
+  ],
+  "processing_time": 100,
+  "results": [
+    {
+      "id": "createnetherindustry:soul_blaze_rod"
+    }
+  ]
+}

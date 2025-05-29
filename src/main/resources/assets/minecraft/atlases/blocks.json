@@ -1,0 +1,21 @@
+{
+  "sources": [
+    {
+      "type": "single",
+      "resource": "createnetherindustry:fluid/thin_soul_fluid_still"
+    },
+    {
+      "type": "single",
+      "resource": "createnetherindustry:fluid/thin_soul_fluid_flowing"
+    },
+
+    {
+      "type": "single",
+      "resource": "createnetherindustry:fluid/thick_soul_syrup_still"
+    },
+    {
+      "type": "single",
+      "resource": "createnetherindustry:fluid/thick_soul_syrup_flowing"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "type": "create:filling",
+  "ingredients": [
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "type": "fluid_stack",
+      "amount": 250,
+      "fluid": "createnetherindustry:thick_soul_syrup"
+    }
+  ],
+  "results": [
+    {
+      "id": "createnetherindustry:thick_soul_bottle_item"
+    }
+  ]
+}

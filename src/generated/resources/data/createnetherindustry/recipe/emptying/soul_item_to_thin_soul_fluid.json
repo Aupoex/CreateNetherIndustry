@@ -1,0 +1,14 @@
+{
+  "type": "create:emptying",
+  "ingredients": [
+    {
+      "item": "createnetherindustry:soul_item"
+    }
+  ],
+  "results": [
+    {
+      "amount": 250,
+      "id": "createnetherindustry:thin_soul_fluid"
+    }
+  ]
+}

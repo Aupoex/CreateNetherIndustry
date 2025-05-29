@@ -1,0 +1,14 @@
+{
+  "type": "create:splashing",
+  "ingredients": [
+    {
+      "item": "createnetherindustry:blaze_fruit"
+    }
+  ],
+  "processing_time": 200,
+  "results": [
+    {
+      "id": "minecraft:gunpowder"
+    }
+  ]
+}

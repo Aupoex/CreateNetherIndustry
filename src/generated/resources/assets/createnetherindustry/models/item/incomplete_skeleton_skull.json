@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "createnetherindustry:item/incomplete_skeleton_skull"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ancient_mechanism": {
+      "conditions": {
+        "items": [
+          {
+            "items": "createnetherindustry:mysterious_ancient_mechanism"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_iron_bars": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:iron_bars"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "createnetherindustry:crafting/soul_stripping_medium"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_ancient_mechanism",
+      "has_iron_bars"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "createnetherindustry:crafting/soul_stripping_medium"
+    ]
+  }
+}

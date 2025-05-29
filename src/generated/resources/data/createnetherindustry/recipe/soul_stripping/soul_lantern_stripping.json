@@ -1,0 +1,17 @@
+{
+  "type": "createnetherindustry:soul_stripping",
+  "ingredients": [
+    {
+      "item": "minecraft:soul_lantern"
+    }
+  ],
+  "processingTime": 200,
+  "results": [
+    {
+      "id": "minecraft:lantern"
+    },
+    {
+      "id": "createnetherindustry:soul_item"
+    }
+  ]
+}

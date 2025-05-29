@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:blaze_rod"
+    },
+    "G": {
+      "item": "minecraft:gold_block"
+    },
+    "T": {
+      "tag": "minecraft:saplings"
+    }
+  },
+  "pattern": [
+    "  T",
+    " B ",
+    "G  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "createnetherindustry:blaze_twig"
+  }
+}
