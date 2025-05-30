@@ -2,4 +2,4 @@
 Create: Nether Industry
 =======
 
-Now in developing
+A Create addon themed around the Nether.
