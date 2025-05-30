@@ -52,6 +52,26 @@ public class CNIItems {
                     .fireResistant()
             )
             .register();
+    public static final ItemEntry<SoulBlazePickaxe> SOUL_BLAZE_PICKAXE = REGISTRATE
+            .item("soul_blaze_pickaxe", properties -> new SoulBlazePickaxe(CNITiers.SOUL_BLAZE_TIER, properties)
+            )
+            .lang("萦魂烈焰镐")
+            .properties(p -> p
+                    .stacksTo(1)
+                    .rarity(Rarity.UNCOMMON)
+                    .fireResistant()
+            )
+            .register();
+    public static final ItemEntry<SoulBlazeAxe> SOUL_BLAZE_AXE = REGISTRATE
+            .item("soul_blaze_axe", properties -> new SoulBlazeAxe(CNITiers.SOUL_BLAZE_TIER, properties)
+            )
+            .lang("萦魂烈焰斧")
+            .properties(p -> p
+                    .stacksTo(1)
+                    .rarity(Rarity.UNCOMMON)
+                    .fireResistant()
+            )
+            .register();
 
 
 
@@ -65,9 +85,19 @@ public class CNIItems {
             .lang("未完成的骷髅头颅")
             .properties(p -> p.stacksTo(64))
             .register();
+    public static final ItemEntry<Item> INCOMPLETE_ANCIENT_MECHANISM = REGISTRATE
+            .item("incomplete_mysterious_ancient_mechanism", Item::new)
+            .lang("未完成的神秘构件")
+            .properties(p -> p.stacksTo(64))
+            .register();
     public static final ItemEntry<Item> DEAD_BLAZE_ROD = REGISTRATE
             .item("dead_blaze_rod", Item::new)
             .lang("失活烈焰棒")
+            .properties(p -> p.stacksTo(64))
+            .register();
+    public static final ItemEntry<Item> OBSESSION_SNOW = REGISTRATE
+            .item("obsession_snow", Item::new)
+            .lang("雪中执念")
             .properties(p -> p.stacksTo(64))
             .register();
     public static final ItemEntry<Item> BLAZE_FRUIT = REGISTRATE

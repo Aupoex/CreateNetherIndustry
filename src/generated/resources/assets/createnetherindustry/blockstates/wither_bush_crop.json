@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "createnetherindustry:block/wither_bush_block/wither_bush_stage0"
+    },
+    "age=1": {
+      "model": "createnetherindustry:block/wither_bush_block/wither_bush_stage1"
+    },
+    "age=2": {
+      "model": "createnetherindustry:block/wither_bush_block/wither_bush_stage2"
+    },
+    "age=3": {
+      "model": "createnetherindustry:block/wither_bush_block/wither_bush_stage3"
+    }
+  }
+}

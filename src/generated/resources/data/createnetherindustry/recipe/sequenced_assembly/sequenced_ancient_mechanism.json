@@ -1,0 +1,102 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "create:precision_mechanism"
+  },
+  "loops": 4,
+  "results": [
+    {
+      "chance": 0.5,
+      "id": "createnetherindustry:mysterious_ancient_mechanism"
+    },
+    {
+      "chance": 0.1,
+      "id": "minecraft:amethyst_shard"
+    },
+    {
+      "chance": 0.1,
+      "id": "minecraft:nether_brick"
+    },
+    {
+      "chance": 0.1,
+      "id": "create:sturdy_sheet"
+    },
+    {
+      "chance": 0.1,
+      "id": "create:sturdy_sheet"
+    },
+    {
+      "chance": 0.1,
+      "id": "create:incomplete_precision_mechanism"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "createnetherindustry:incomplete_mysterious_ancient_mechanism"
+        },
+        {
+          "item": "minecraft:nether_brick"
+        }
+      ],
+      "results": [
+        {
+          "id": "createnetherindustry:incomplete_mysterious_ancient_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "createnetherindustry:incomplete_mysterious_ancient_mechanism"
+        },
+        {
+          "item": "create:sturdy_sheet"
+        }
+      ],
+      "results": [
+        {
+          "id": "createnetherindustry:incomplete_mysterious_ancient_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "createnetherindustry:incomplete_mysterious_ancient_mechanism"
+        },
+        {
+          "item": "minecraft:amethyst_shard"
+        }
+      ],
+      "results": [
+        {
+          "id": "createnetherindustry:incomplete_mysterious_ancient_mechanism"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "createnetherindustry:incomplete_mysterious_ancient_mechanism"
+        },
+        {
+          "item": "create:polished_rose_quartz"
+        }
+      ],
+      "results": [
+        {
+          "id": "createnetherindustry:incomplete_mysterious_ancient_mechanism"
+        }
+      ]
+    }
+  ],
+  "transitional_item": {
+    "id": "createnetherindustry:incomplete_mysterious_ancient_mechanism"
+  }
+}

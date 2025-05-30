@@ -1,5 +1,6 @@
 package com.upo.createnetherindustry.data;
 
+import com.simibubi.create.AllItems;
 import com.simibubi.create.content.fluids.transfer.EmptyingRecipe;
 import com.simibubi.create.content.kinetics.millstone.MillingRecipe;
 import com.simibubi.create.content.kinetics.mixer.MixingRecipe;
@@ -11,6 +12,7 @@ import com.simibubi.create.foundation.fluid.FluidIngredient;
 import com.upo.createnetherindustry.CreateNetherIndustry;
 import com.upo.createnetherindustry.content.recipes.condenser.CondensingRecipeBuilder;
 import com.upo.createnetherindustry.data.recipe.SoulStrippingRecipeBuilder;
+import com.simibubi.create.content.kinetics.press.PressingRecipe;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -19,10 +21,12 @@ import com.simibubi.create.content.kinetics.deployer.DeployerApplicationRecipe;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.core.HolderLookup;
 import com.simibubi.create.content.fluids.transfer.FillingRecipe;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.fluids.FluidStack;
 import static com.simibubi.create.AllBlocks.*;
+import static com.simibubi.create.AllItems.*;
 import static com.upo.createnetherindustry.registry.CNIBlocks.SOUL_CONDENSER;
 import static com.upo.createnetherindustry.registry.CNIBlocks.SOUL_STRIPPING_MEDIUM;
 import static com.upo.createnetherindustry.registry.CNIFluids.THICK_SOUL_SYRUP;
@@ -96,6 +100,13 @@ public class CNIRecipeProvider extends RecipeProvider {
                 .output(0.2f, SOUL_ITEM.get(), 1)
                 .duration(200)
                 .save(recipeOutput);
+        //地狱疣
+        SoulStrippingRecipeBuilder.builder("nether_wart_stripping")
+                .require(NETHER_WART)
+                .output(WHEAT_SEEDS)
+                .output(0.1f, SOUL_ITEM.get(), 1)
+                .duration(200)
+                .save(recipeOutput);
 
         //——————液体转化————————
         Fluid milkFluidInstance = BuiltInRegistries.FLUID.get(ResourceLocation.withDefaultNamespace("milk"));
@@ -120,6 +131,13 @@ public class CNIRecipeProvider extends RecipeProvider {
                 ResourceLocation.fromNamespaceAndPath(CreateNetherIndustry.MODID, "gunpowder_from_blaze_fruit"))
                 .require(BLAZE_FRUIT.get())
                 .output(GUNPOWDER)
+                .duration(200)
+                .build(recipeOutput);
+        //岩浆膏
+        new ProcessingRecipeBuilder<>(SplashingRecipe::new,
+                ResourceLocation.fromNamespaceAndPath(CreateNetherIndustry.MODID, "slime_ball_from_magma_cream"))
+                .require(MAGMA_CREAM)
+                .output(SLIME_BALL)
                 .duration(200)
                 .build(recipeOutput);
 
@@ -162,6 +180,28 @@ public class CNIRecipeProvider extends RecipeProvider {
                 .define('G', GOLD_BLOCK)
                 .unlockedBy("has_blaze_rod", has(BLAZE_ROD))
                 .save(recipeOutput,ResourceLocation.fromNamespaceAndPath(CreateNetherIndustry.MODID, "crafting/blaze_twig"));
+        //萦魂烈焰稿
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SOUL_BLAZE_PICKAXE)
+                .pattern("GGZ")
+                .pattern(" YG")
+                .pattern("Y G")
+                .define('Z', AMETHYST_SHARD)
+                .define('G', GOLD_INGOT)
+                .define('Y', SOUL_BLAZE_ROD)
+                .unlockedBy("has_gold_ingot", has(GOLD_INGOT))
+                .unlockedBy("has_amethyst_shard", has(AMETHYST_SHARD))
+                .save(recipeOutput,ResourceLocation.fromNamespaceAndPath(CreateNetherIndustry.MODID, "crafting/soul_blaze_pickaxe"));
+        //萦魂烈焰斧
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, SOUL_BLAZE_AXE)
+                .pattern("GGZ")
+                .pattern("GY ")
+                .pattern("Y  ")
+                .define('Z', AMETHYST_SHARD)
+                .define('G', GOLD_INGOT)
+                .define('Y', SOUL_BLAZE_ROD)
+                .unlockedBy("has_gold_ingot", has(GOLD_INGOT))
+                .unlockedBy("has_amethyst_shard", has(AMETHYST_SHARD))
+                .save(recipeOutput,ResourceLocation.fromNamespaceAndPath(CreateNetherIndustry.MODID, "crafting/soul_blaze_axe"));
 
         //————————注液————————
         //稀薄魂灵瓶
@@ -251,6 +291,36 @@ public class CNIRecipeProvider extends RecipeProvider {
                 .loops(2)
                 .addOutput(BLAZE_ROD, 0.8f)
                 .addOutput(BLAZE_POWDER, 0.2f)
+                .build(recipeOutput);
+        //恶魂之泪
+        new SequencedAssemblyRecipeBuilder(
+                ResourceLocation.fromNamespaceAndPath(CreateNetherIndustry.MODID, "sequenced_ghast_tear"))
+                .require(SNOWBALL)
+                .transitionTo(OBSESSION_SNOW)
+                .addStep(FillingRecipe::new, rb -> rb.require(FluidIngredient.fromFluid(THICK_SOUL_SYRUP.get(), 250)))
+                .addStep(FillingRecipe::new, rb -> rb.require(FluidIngredient.fromFluid(THICK_SOUL_SYRUP.get(), 250)))
+                .addStep(PressingRecipe::new, rb -> rb)
+                .loops(3)
+                .addOutput(GHAST_TEAR, 0.75f)
+                .addOutput(SNOW_BLOCK, 0.15f)
+                .addOutput(SOUL_ITEM, 0.10f)
+                .build(recipeOutput);
+        //远古构件
+        new SequencedAssemblyRecipeBuilder(
+                ResourceLocation.fromNamespaceAndPath(CreateNetherIndustry.MODID, "sequenced_ancient_mechanism"))
+                .require(AllItems.PRECISION_MECHANISM)
+                .transitionTo(INCOMPLETE_ANCIENT_MECHANISM)
+                .addStep(DeployerApplicationRecipe::new, rb -> rb.require(NETHER_BRICK))
+                .addStep(DeployerApplicationRecipe::new, rb -> rb.require(STURDY_SHEET))
+                .addStep(DeployerApplicationRecipe::new, rb -> rb.require(AMETHYST_SHARD))
+                .addStep(DeployerApplicationRecipe::new, rb -> rb.require(POLISHED_ROSE_QUARTZ))
+                .loops(4)
+                .addOutput(ANCIENT_MECHANISM, 0.50f)
+                .addOutput(AMETHYST_SHARD, 0.10f)
+                .addOutput(NETHER_BRICK, 0.10f)
+                .addOutput(STURDY_SHEET, 0.10f)
+                .addOutput(STURDY_SHEET, 0.10f)
+                .addOutput(INCOMPLETE_PRECISION_MECHANISM, 0.10f)
                 .build(recipeOutput);
     }
 

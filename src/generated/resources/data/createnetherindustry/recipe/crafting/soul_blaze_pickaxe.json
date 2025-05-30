@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "Y": {
+      "item": "createnetherindustry:soul_blaze_rod"
+    },
+    "Z": {
+      "item": "minecraft:amethyst_shard"
+    }
+  },
+  "pattern": [
+    "GGZ",
+    " YG",
+    "Y G"
+  ],
+  "result": {
+    "count": 1,
+    "id": "createnetherindustry:soul_blaze_pickaxe"
+  }
+}

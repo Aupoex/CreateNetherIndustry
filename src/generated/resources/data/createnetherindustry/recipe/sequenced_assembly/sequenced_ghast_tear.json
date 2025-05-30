@@ -1,0 +1,75 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "minecraft:snowball"
+  },
+  "loops": 3,
+  "results": [
+    {
+      "chance": 0.75,
+      "id": "minecraft:ghast_tear"
+    },
+    {
+      "chance": 0.15,
+      "id": "minecraft:snow_block"
+    },
+    {
+      "chance": 0.1,
+      "id": "createnetherindustry:soul_item"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:filling",
+      "ingredients": [
+        {
+          "item": "createnetherindustry:obsession_snow"
+        },
+        {
+          "type": "fluid_stack",
+          "amount": 250,
+          "fluid": "createnetherindustry:thick_soul_syrup"
+        }
+      ],
+      "results": [
+        {
+          "id": "createnetherindustry:obsession_snow"
+        }
+      ]
+    },
+    {
+      "type": "create:filling",
+      "ingredients": [
+        {
+          "item": "createnetherindustry:obsession_snow"
+        },
+        {
+          "type": "fluid_stack",
+          "amount": 250,
+          "fluid": "createnetherindustry:thick_soul_syrup"
+        }
+      ],
+      "results": [
+        {
+          "id": "createnetherindustry:obsession_snow"
+        }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "createnetherindustry:obsession_snow"
+        }
+      ],
+      "results": [
+        {
+          "id": "createnetherindustry:obsession_snow"
+        }
+      ]
+    }
+  ],
+  "transitional_item": {
+    "id": "createnetherindustry:obsession_snow"
+  }
+}

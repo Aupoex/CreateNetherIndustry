@@ -1,13 +1,14 @@
 package com.upo.createnetherindustry.event;
 
 import com.upo.createnetherindustry.registry.CNIBlocks;
-import com.upo.createnetherindustry.registry.CNIItems;
+import com.upo.createnetherindustry.registry.CNITags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -16,9 +17,9 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.GAME)
-public class BlazeTwigPlantingHandler {
+public class WitherBushPlantingHandler {
     @SubscribeEvent
-    public static void onPlayerRightClickBlockPlantBlazeTwig(PlayerInteractEvent.RightClickBlock event) {
+    public static void onPlayerRightClickBlockPlantWitherBush(PlayerInteractEvent.RightClickBlock event) {
         if (event.isCanceled()) {
             return;
         }
@@ -29,12 +30,13 @@ public class BlazeTwigPlantingHandler {
         ItemStack heldStack = event.getItemStack();
         InteractionHand hand = event.getHand();
 
-        if (heldStack.getItem() != CNIItems.BLAZE_TWIG.get()) {
+        if (heldStack.getItem() != Items.WITHER_ROSE) {
             return;
         }
 
         BlockState clickedBlockState = level.getBlockState(clickedPos);
-        if (!clickedBlockState.is(CNIBlocks.CRIMSON_NYLIUM_FARMLAND)) {
+
+        if (!clickedBlockState.is(CNIBlocks.WARPED_NYLIUM_FARMLAND)) {
             return;
         }
 
@@ -43,8 +45,7 @@ public class BlazeTwigPlantingHandler {
             return;
         }
 
-
-        BlockState cropToPlace = CNIBlocks.BLAZE_TWIG_CROP.get().defaultBlockState();
+        BlockState cropToPlace = CNIBlocks.WITHER_BUSH_CROP.get().defaultBlockState();
         if (!cropToPlace.canSurvive(level, plantPos)) {
             return;
         }

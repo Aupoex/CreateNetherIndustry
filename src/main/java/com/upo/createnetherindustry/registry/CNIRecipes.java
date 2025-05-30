@@ -5,6 +5,7 @@ import com.upo.createnetherindustry.content.recipes.CNIRecipeTypeInfo;
 import com.upo.createnetherindustry.content.recipes.SoulStrippingRecipe;
 import com.upo.createnetherindustry.content.recipes.SoulStrippingRecipeSerializer;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.neoforged.bus.api.IEventBus;
@@ -27,6 +28,7 @@ public class CNIRecipes {
 
     public static final CNIRecipeTypeInfo<SoulStrippingRecipe> SOUL_STRIPPING_TYPE_INFO =
             new CNIRecipeTypeInfo<>(SOUL_STRIPPING_SERIALIZER, SOUL_STRIPPING_TYPE);
+
 
     public static void register(IEventBus modBus) {
         TYPES.register(modBus);

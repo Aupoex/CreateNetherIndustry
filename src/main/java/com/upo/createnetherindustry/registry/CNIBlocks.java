@@ -5,6 +5,7 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import com.upo.createnetherindustry.CreateNetherIndustry;
 import com.upo.createnetherindustry.content.blocks.SoulCondenserBlock;
 import com.upo.createnetherindustry.content.blocks.corp.BlazeCropBlock;
+import com.upo.createnetherindustry.content.blocks.corp.WitherBushCropBlock;
 import com.upo.createnetherindustry.content.blocks.nylium_farmland.CrimsonNyliumFarmlandBlock;
 import com.upo.createnetherindustry.content.blocks.corp.GoldenCarrotCropBlock;
 import com.upo.createnetherindustry.content.blocks.SoulStrippingBlock;
@@ -73,6 +74,7 @@ public class CNIBlocks {
             // .renderer(() -> SoulCondenserRenderer::new)
             .build()
             .item()
+            .model((context, provider) -> provider.withExistingParent(context.getName(), provider.modLoc("block/soul_condenser_gui")))
             .build()
             .register();
 
@@ -239,7 +241,52 @@ public class CNIBlocks {
                 registrateLootTables.add(block, tableBuilder);
             })
             .register();
+    //作物凋灵玫瑰丛
+    public static final BlockEntry<WitherBushCropBlock> WITHER_BUSH_CROP = REGISTRATE
+            .block("wither_bush_crop", WitherBushCropBlock::new)
+            .initialProperties(() -> Blocks.WITHER_ROSE)
+            .properties(p -> p.noCollission().randomTicks().instabreak().sound(SoundType.CROP))
+            .blockstate((ctx, prov) -> {
+                prov.getVariantBuilder(ctx.getEntry())
+                        .forAllStates(state -> {
+                            int age = state.getValue(WitherBushCropBlock.AGE);
+                            String modelPath = "block/wither_bush_block/wither_bush_stage" + age;
+                            ModelFile modelFile = prov.models().getExistingFile(prov.modLoc(modelPath));
+                            return ConfiguredModel.builder().modelFile(modelFile).build();
+                        });
+            })
+            .loot((registrateLootTables, block) -> {
+                LootTable.Builder tableBuilder = LootTable.lootTable();
+                StatePropertiesPredicate.Builder matureStatePredicate = StatePropertiesPredicate.Builder.properties()
+                        .hasProperty(WitherBushCropBlock.AGE, WitherBushCropBlock.MAX_AGE);
+                LootItemCondition.Builder matureCondition = LootItemBlockStatePropertyCondition
+                        .hasBlockStateProperties(block)
+                        .setProperties(matureStatePredicate);
+                tableBuilder.withPool(LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1.0F))
+                        .add(LootItem.lootTableItem(Items.WITHER_ROSE)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 3.0F)))
+                        )
+                        .when(matureCondition)
+                );
+                for (int age = 0; age < WitherBushCropBlock.MAX_AGE; age++) {
+                    StatePropertiesPredicate.Builder immatureStateSpecificAgePredicate = StatePropertiesPredicate.Builder.properties()
+                            .hasProperty(WitherBushCropBlock.AGE, age);
+                    LootItemCondition.Builder immatureSpecificAgeCondition = LootItemBlockStatePropertyCondition
+                            .hasBlockStateProperties(block)
+                            .setProperties(immatureStateSpecificAgePredicate);
 
+                    tableBuilder.withPool(LootPool.lootPool()
+                            .setRolls(ConstantValue.exactly(1.0F))
+                            .add(LootItem.lootTableItem(Items.WITHER_ROSE)
+                                    .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+                            )
+                            .when(immatureSpecificAgeCondition)
+                    );
+                }
+                registrateLootTables.add(block, tableBuilder);
+            })
+            .register();
 
     public static void register() {}
 }

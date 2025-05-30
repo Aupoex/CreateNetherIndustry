@@ -73,6 +73,7 @@ public class CreateNetherIndustry
             CNIPartials.init();
             ItemBlockRenderTypes.setRenderLayer(CNIBlocks.SOUL_STRIPPING_MEDIUM.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(CNIBlocks.BLAZE_TWIG_CROP.get(), RenderType.cutoutMipped());
+            ItemBlockRenderTypes.setRenderLayer(CNIBlocks.WITHER_BUSH_CROP.get(), RenderType.cutoutMipped());
             ItemBlockRenderTypes.setRenderLayer(CNIBlocks.SOUL_CONDENSER.get(), RenderType.cutoutMipped());
             PonderIndex.addPlugin(new CNIPonderPlugin());
             CNIFluids.registerFluidInteractions();
