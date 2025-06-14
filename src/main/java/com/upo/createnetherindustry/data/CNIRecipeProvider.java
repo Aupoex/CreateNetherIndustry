@@ -5,13 +5,13 @@ import com.simibubi.create.content.fluids.transfer.EmptyingRecipe;
 import com.simibubi.create.content.kinetics.millstone.MillingRecipe;
 import com.simibubi.create.content.kinetics.mixer.MixingRecipe;
 import com.simibubi.create.content.processing.recipe.HeatCondition;
-import com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder;
+import com.simibubi.create.content.processing.recipe.StandardProcessingRecipe;
 import com.simibubi.create.content.processing.sequenced.SequencedAssemblyRecipeBuilder;
 import com.simibubi.create.content.kinetics.fan.processing.SplashingRecipe;
 import com.simibubi.create.foundation.fluid.FluidIngredient;
 import com.upo.createnetherindustry.CreateNetherIndustry;
-import com.upo.createnetherindustry.content.recipes.condenser.CondensingRecipeBuilder;
-import com.upo.createnetherindustry.data.recipe.SoulStrippingRecipeBuilder;
+import com.upo.createnetherindustry.content.recipes.soulstrip.SoulStrippingRecipe;
+import com.upo.createnetherindustry.content.recipes.condenser.CondensingRecipe;
 import com.simibubi.create.content.kinetics.press.PressingRecipe;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
@@ -21,7 +21,6 @@ import com.simibubi.create.content.kinetics.deployer.DeployerApplicationRecipe;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.core.HolderLookup;
 import com.simibubi.create.content.fluids.transfer.FillingRecipe;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.fluids.FluidStack;
@@ -45,100 +44,87 @@ public class CNIRecipeProvider extends RecipeProvider {
     protected void buildRecipes(RecipeOutput recipeOutput) {
         //————————祛魂————————
         //灵魂沙
-        SoulStrippingRecipeBuilder.builder("soul_sand_stripping")
+        new StandardProcessingRecipe.Builder<>(SoulStrippingRecipe::new, CreateNetherIndustry.asResource("soul_sand_stripping"))
                 .require(SOUL_SAND)
                 .output(SAND)
                 .output(0.5f, SOUL_ITEM.get(), 1)
-                .duration(200)
-                .save(recipeOutput);
+                .build(recipeOutput);
         //灵魂土
-        SoulStrippingRecipeBuilder.builder("soul_soil_stripping")
+        new StandardProcessingRecipe.Builder<>(SoulStrippingRecipe::new, CreateNetherIndustry.asResource("soul_soil_stripping"))
                 .require(SOUL_SOIL)
                 .output(DIRT)
                 .output(0.5f, SOUL_ITEM.get(), 1)
-                .duration(200)
-                .save(recipeOutput);
+                .build(recipeOutput);
         //灵魂火把
-        SoulStrippingRecipeBuilder.builder("soul_torch_stripping")
+        new StandardProcessingRecipe.Builder<>(SoulStrippingRecipe::new, CreateNetherIndustry.asResource("soul_torch_stripping"))
                 .require(SOUL_TORCH)
                 .output(TORCH)
                 .output(1, SOUL_ITEM.get(), 1)
-                .duration(200)
-                .save(recipeOutput);
+                .build(recipeOutput);
         //灵魂灯笼
-        SoulStrippingRecipeBuilder.builder("soul_lantern_stripping")
+        new StandardProcessingRecipe.Builder<>(SoulStrippingRecipe::new, CreateNetherIndustry.asResource("soul_lantern_stripping"))
                 .require(SOUL_LANTERN)
                 .output(LANTERN)
                 .output(1, SOUL_ITEM.get(), 1)
-                .duration(200)
-                .save(recipeOutput);
+                .build(recipeOutput);
         //灵魂营火
-        SoulStrippingRecipeBuilder.builder("soul_campfire_stripping")
+        new StandardProcessingRecipe.Builder<>(SoulStrippingRecipe::new, CreateNetherIndustry.asResource("soul_campfire_stripping"))
                 .require(SOUL_CAMPFIRE)
                 .output(CAMPFIRE)
                 .output(1, SOUL_ITEM.get(), 1)
-                .duration(200)
-                .save(recipeOutput);
+                .build(recipeOutput);
         //黑石
-        SoulStrippingRecipeBuilder.builder("black_stone_stripping")
+        new StandardProcessingRecipe.Builder<>(SoulStrippingRecipe::new, CreateNetherIndustry.asResource("black_stone_stripping"))
                 .require(BLACKSTONE)
                 .output(COBBLESTONE)
                 .output(0.5f, SOUL_ITEM.get(), 1)
-                .duration(200)
-                .save(recipeOutput);
+                .build(recipeOutput);
         //哭泣黑曜石
-        SoulStrippingRecipeBuilder.builder("crying_obsidian_stripping")
+        new StandardProcessingRecipe.Builder<>(SoulStrippingRecipe::new, CreateNetherIndustry.asResource("crying_obsidian_stripping"))
                 .require(CRYING_OBSIDIAN)
                 .output(OBSIDIAN)
                 .output(0.5f, SOUL_ITEM.get(), 1)
-                .duration(200)
-                .save(recipeOutput);
+                .build(recipeOutput);
         //腐肉
-        SoulStrippingRecipeBuilder.builder("rotten_flesh_stripping")
+        new StandardProcessingRecipe.Builder<>(SoulStrippingRecipe::new, CreateNetherIndustry.asResource("rotten_flesh_stripping"))
                 .require(ROTTEN_FLESH)
                 .output(LEATHER)
                 .output(0.2f, SOUL_ITEM.get(), 1)
-                .duration(200)
-                .save(recipeOutput);
+                .build(recipeOutput);
         //地狱疣
-        SoulStrippingRecipeBuilder.builder("nether_wart_stripping")
+        new StandardProcessingRecipe.Builder<>(SoulStrippingRecipe::new, CreateNetherIndustry.asResource("nether_wart_stripping"))
                 .require(NETHER_WART)
                 .output(WHEAT_SEEDS)
                 .output(0.1f, SOUL_ITEM.get(), 1)
-                .duration(200)
-                .save(recipeOutput);
+                .build(recipeOutput);
 
         //——————液体转化————————
         Fluid milkFluidInstance = BuiltInRegistries.FLUID.get(ResourceLocation.withDefaultNamespace("milk"));
         Fluid thinSoulFluidInstance = BuiltInRegistries.FLUID.get(ResourceLocation.fromNamespaceAndPath("createnetherindustry", "thin_soul_fluid"));
         Fluid thickSoulSyrupInstance = BuiltInRegistries.FLUID.get(ResourceLocation.fromNamespaceAndPath("createnetherindustry", "thick_soul_syrup"));
         //水转奶
-        CondensingRecipeBuilder.builder("water_to_milk")
-                .inputFluid(new FluidStack(Fluids.WATER, 100))
-                .outputFluid(new FluidStack(milkFluidInstance, 100))
-                .duration(5120)
-                .save(recipeOutput);
+        CondensingRecipe.builder(CreateNetherIndustry.asResource("water_to_milk"))
+                .require(FluidIngredient.fromFluidStack(new FluidStack(Fluids.WATER, 100)))
+                .output(new FluidStack(milkFluidInstance, 100))
+                .build(recipeOutput);
         //稀薄转浓稠
-        CondensingRecipeBuilder.builder("thin_to_thick")
-                .inputFluid(new FluidStack(thinSoulFluidInstance, 100))
-                .outputFluid(new FluidStack(thickSoulSyrupInstance, 100))
-                .duration(5120)
-                .save(recipeOutput);
+        CondensingRecipe.builder(CreateNetherIndustry.asResource("thin_to_thick"))
+                .require(FluidIngredient.fromFluidStack(new FluidStack(thinSoulFluidInstance, 100)))
+                .output(new FluidStack(thickSoulSyrupInstance, 100))
+                .build(recipeOutput);
 
         //————————洗涤————————
         //烈焰果实
-        new ProcessingRecipeBuilder<>(SplashingRecipe::new,
+        new StandardProcessingRecipe.Builder<>(SplashingRecipe::new,
                 ResourceLocation.fromNamespaceAndPath(CreateNetherIndustry.MODID, "gunpowder_from_blaze_fruit"))
                 .require(BLAZE_FRUIT.get())
                 .output(GUNPOWDER)
-                .duration(200)
                 .build(recipeOutput);
         //岩浆膏
-        new ProcessingRecipeBuilder<>(SplashingRecipe::new,
+        new StandardProcessingRecipe.Builder<>(SplashingRecipe::new,
                 ResourceLocation.fromNamespaceAndPath(CreateNetherIndustry.MODID, "slime_ball_from_magma_cream"))
                 .require(MAGMA_CREAM)
                 .output(SLIME_BALL)
-                .duration(200)
                 .build(recipeOutput);
 
         //——————工作台合成——————
@@ -205,14 +191,14 @@ public class CNIRecipeProvider extends RecipeProvider {
 
         //————————注液————————
         //稀薄魂灵瓶
-        new ProcessingRecipeBuilder<>(FillingRecipe::new,
+        new StandardProcessingRecipe.Builder<>(FillingRecipe::new,
                 ResourceLocation.fromNamespaceAndPath(CreateNetherIndustry.MODID, "soul_bottle_from_thin_soul_fluid"))
                 .require(GLASS_BOTTLE)
                 .require(FluidIngredient.fromFluid(THIN_SOUL_FLUID.get(), 250))
                 .output(SOUL_BOTTLE_ITEM.get())
                 .build(recipeOutput);
         //浓稠魂灵瓶
-        new ProcessingRecipeBuilder<>(FillingRecipe::new,
+        new StandardProcessingRecipe.Builder<>(FillingRecipe::new,
                 ResourceLocation.fromNamespaceAndPath(CreateNetherIndustry.MODID, "soul_bottle_from_thick_soul_syrup"))
                 .require(GLASS_BOTTLE)
                 .require(FluidIngredient.fromFluid(THICK_SOUL_SYRUP.get(), 250))
@@ -220,25 +206,23 @@ public class CNIRecipeProvider extends RecipeProvider {
                 .build(recipeOutput);
 
         //萦魂烈焰棒
-        new ProcessingRecipeBuilder<>(FillingRecipe::new,
+        new StandardProcessingRecipe.Builder<>(FillingRecipe::new,
                 ResourceLocation.fromNamespaceAndPath(CreateNetherIndustry.MODID, "soul_blaze_rod_from_thin_soul_fluid"))
                 .require(BLAZE_ROD)
                 .require(FluidIngredient.fromFluid(THICK_SOUL_SYRUP.get(), 250))
                 .output(SOUL_BLAZE_ROD.get())
-                .duration(100)
                 .build(recipeOutput);
         //哭泣黑曜石
-        new ProcessingRecipeBuilder<>(FillingRecipe::new,
+        new StandardProcessingRecipe.Builder<>(FillingRecipe::new,
                 ResourceLocation.fromNamespaceAndPath(CreateNetherIndustry.MODID, "crying_obsidian_from_thin_soul_fluid"))
                 .require(OBSIDIAN)
                 .require(FluidIngredient.fromFluid(THICK_SOUL_SYRUP.get(), 250))
                 .output(CRYING_OBSIDIAN)
-                .duration(100)
                 .build(recipeOutput);
 
         //————————分液————————
         //魂灵颗粒
-        new ProcessingRecipeBuilder<>(EmptyingRecipe::new,
+        new StandardProcessingRecipe.Builder<>(EmptyingRecipe::new,
                 ResourceLocation.fromNamespaceAndPath(CreateNetherIndustry.MODID, "soul_item_to_thin_soul_fluid"))
                 .require(SOUL_ITEM)
                 .output(THIN_SOUL_FLUID.get(), 250)
@@ -246,12 +230,9 @@ public class CNIRecipeProvider extends RecipeProvider {
 
         //————————搅拌————————
         //凋零骷髅头颅
-        new ProcessingRecipeBuilder<>(MixingRecipe::new,
+        new StandardProcessingRecipe.Builder<>(MixingRecipe::new,
                 ResourceLocation.fromNamespaceAndPath(CreateNetherIndustry.MODID, "skeleton_to_wither_skeleton_skull"))
                 .require(SKELETON_SKULL)
-                .require(WITHER_ROSE).require(WITHER_ROSE).require(WITHER_ROSE).require(WITHER_ROSE).require(WITHER_ROSE).require(WITHER_ROSE).require(WITHER_ROSE).require(WITHER_ROSE)
-                .require(WITHER_ROSE).require(WITHER_ROSE).require(WITHER_ROSE).require(WITHER_ROSE).require(WITHER_ROSE).require(WITHER_ROSE).require(WITHER_ROSE).require(WITHER_ROSE)
-                .require(WITHER_ROSE).require(WITHER_ROSE).require(WITHER_ROSE).require(WITHER_ROSE).require(WITHER_ROSE).require(WITHER_ROSE).require(WITHER_ROSE).require(WITHER_ROSE)
                 .require(WITHER_ROSE).require(WITHER_ROSE).require(WITHER_ROSE).require(WITHER_ROSE).require(WITHER_ROSE).require(WITHER_ROSE).require(WITHER_ROSE).require(WITHER_ROSE)
                 .output(WITHER_SKELETON_SKULL)
                 .requiresHeat(HeatCondition.SUPERHEATED)
@@ -259,7 +240,7 @@ public class CNIRecipeProvider extends RecipeProvider {
 
         //——————研磨————————
         //烈焰果实
-        new ProcessingRecipeBuilder<>(MillingRecipe::new,
+        new StandardProcessingRecipe.Builder<>(MillingRecipe::new,
                 ResourceLocation.fromNamespaceAndPath(CreateNetherIndustry.MODID, "blaze_fruit_to_blaze_powder"))
                 .require(BLAZE_FRUIT)
                 .output(BLAZE_POWDER,3)

@@ -4,9 +4,9 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
 import com.simibubi.create.foundation.blockEntity.behaviour.fluid.SmartFluidTankBehaviour;
-import com.simibubi.create.foundation.fluid.FluidRenderer;
 import com.upo.createnetherindustry.content.blockentities.SoulCondenserBlockEntity;
 import net.createmod.catnip.animation.LerpedFloat;
+import net.createmod.catnip.platform.NeoForgeCatnipServices;
 import net.createmod.catnip.render.CachedBuffers;
 import net.createmod.catnip.render.SuperByteBuffer;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -51,7 +51,6 @@ public class SoulCondenserRenderer extends KineticBlockEntityRenderer<SoulConden
     }
 
 
-
     protected void renderInputFluid(SoulCondenserBlockEntity be, float partialTicks, PoseStack ms,
                                     MultiBufferSource buffer, int light, int overlay) {
         SmartFluidTankBehaviour inputTankBev = be.getInputTankBehaviour();
@@ -61,7 +60,6 @@ public class SoulCondenserRenderer extends KineticBlockEntityRenderer<SoulConden
 
         SmartFluidTankBehaviour.TankSegment tankSegment = inputTankBev.getPrimaryTank();
         FluidStack fluidStack = tankSegment.getRenderedFluid();
-
         if (fluidStack.isEmpty()) {
             return;
         }
@@ -93,22 +91,19 @@ public class SoulCondenserRenderer extends KineticBlockEntityRenderer<SoulConden
         float actualYMin = renderAreaMinY_coord;
         float actualYMax = renderAreaMinY_coord + displayFluidHeight;
 
-
         ms.pushPose();
 
-        FluidRenderer.renderFluidBox(
-                fluidStack.getFluid(),
-                fluidStack.getAmount(),
+        NeoForgeCatnipServices.FLUID_RENDERER.renderFluidBox(
+                fluidStack,
                 xMin_coord, actualYMin, zMin_coord,
                 xMax_coord, actualYMax, zMax_coord,
                 buffer,
                 ms,
                 light,
-                false,
-                true,
-                fluidStack.getComponentsPatch()
+                true,true
         );
 
         ms.popPose();
     }
+
 }

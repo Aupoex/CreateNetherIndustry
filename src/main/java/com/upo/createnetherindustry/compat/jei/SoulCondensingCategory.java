@@ -5,9 +5,9 @@ import com.simibubi.create.compat.jei.EmptyBackground;
 import com.simibubi.create.compat.jei.category.CreateRecipeCategory;
 import com.simibubi.create.foundation.gui.AllGuiTextures;
 import com.upo.createnetherindustry.CreateNetherIndustry;
-import com.upo.createnetherindustry.content.recipes.condenser.CondenserRecipeType;
 import com.upo.createnetherindustry.content.recipes.condenser.CondensingRecipe;
 import com.upo.createnetherindustry.registry.CNIBlocks;
+import com.upo.createnetherindustry.registry.CNIRecipes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
@@ -32,8 +32,8 @@ import java.util.stream.Collectors;
 
 public class SoulCondensingCategory extends CreateRecipeCategory<CondensingRecipe> {
 
-    public static final RecipeType<CondensingRecipe> TYPE =
-            new RecipeType<>(CreateNetherIndustry.asResource("soul_condensing"), CondensingRecipe.class);
+    public static final RecipeType<RecipeHolder<CondensingRecipe>> TYPE =
+            RecipeType.createRecipeHolderType(CreateNetherIndustry.asResource("soul_condensing"));
 
     public SoulCondensingCategory(Info<CondensingRecipe> info) {
         super(info);
@@ -42,20 +42,19 @@ public class SoulCondensingCategory extends CreateRecipeCategory<CondensingRecip
     public static SoulCondensingCategory create(IGuiHelper guiHelper) {
         Supplier<List<RecipeHolder<CondensingRecipe>>> recipesSupplier = () ->
                 CNIJEIPlugin.getRecipeManager()
-                        .getAllRecipesFor(CondenserRecipeType.SOUL_CONDENSING_RECIPE_TYPE_DEFERRED.get())
+                        .getAllRecipesFor(CNIRecipes.CONDENSING_TYPE_INFO.getType())
                         .stream()
                         .filter(holder -> holder.value() instanceof CondensingRecipe)
-                        .map(holder -> new RecipeHolder<>(holder.id(), (CondensingRecipe) holder.value()))
+                        .map(holder -> new RecipeHolder<>(holder.id(), holder.value()))
                         .collect(Collectors.toList());
 
         Supplier<ItemStack> condenserCatalystSupplier = () -> new ItemStack(CNIBlocks.SOUL_CONDENSER.get());
-
         List<Supplier<? extends ItemStack>> catalysts = List.of(condenserCatalystSupplier);
 
         Info<CondensingRecipe> info = new Info<>(
                 TYPE,
                 Component.translatable("recipe.createnetherindustry.soul_condensing"),
-                new EmptyBackground(177, 70),
+                new EmptyBackground(177, 80),
                 guiHelper.createDrawableItemStack(new ItemStack(CNIBlocks.SOUL_CONDENSER.get())),
                 recipesSupplier,
                 catalysts
@@ -69,16 +68,13 @@ public class SoulCondensingCategory extends CreateRecipeCategory<CondensingRecip
     private static final int FLUID_TANK_HEIGHT = 48;
 
     @Override
-    public void setRecipe(IRecipeLayoutBuilder builder, CondensingRecipe recipe, IFocusGroup focuses) {
+    protected void setRecipe(IRecipeLayoutBuilder builder, CondensingRecipe recipe, IFocusGroup focuses) {
         FluidStack inputFluid = recipe.getInputFluid();
         FluidStack outputFluid = recipe.getOutputFluid();
 
         int fluidVisualCapacity = 200;
-
         int inputTankX = 15 + 1;
         int inputTankY = (BG_HEIGHT - FLUID_TANK_HEIGHT) / 2 + 1;
-
-        // 输出流体槽位置
         int outputTankX = BG_WIDTH - FLUID_TANK_WIDTH - 15 + 1;
         int outputTankY = inputTankY;
 
@@ -92,8 +88,7 @@ public class SoulCondensingCategory extends CreateRecipeCategory<CondensingRecip
     }
 
     @Override
-    public void draw(CondensingRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics graphics, double mouseX, double mouseY) {
-
+    protected void draw(CondensingRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics graphics, double mouseX, double mouseY) {
         int inputTankBgX = 15;
         int inputTankBgY = (BG_HEIGHT - FLUID_TANK_HEIGHT) / 2;
         drawFluidTankBackground(graphics, inputTankBgX, inputTankBgY);
@@ -110,13 +105,10 @@ public class SoulCondensingCategory extends CreateRecipeCategory<CondensingRecip
         PoseStack poseStack = graphics.pose();
 
         poseStack.pushPose();
-
         int itemCenterX = BG_WIDTH / 2;
         int itemCenterY = 30;
         float desiredVisualSize = 32.0f;
-
         poseStack.translate(itemCenterX, itemCenterY, 100.0F);
-
         poseStack.scale(desiredVisualSize, -desiredVisualSize, desiredVisualSize);
 
         ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
@@ -133,15 +125,11 @@ public class SoulCondensingCategory extends CreateRecipeCategory<CondensingRecip
                 OverlayTexture.NO_OVERLAY,
                 bakedModel
         );
-
         buffer.endBatch();
         poseStack.popPose();
-
     }
 
-
     protected void drawFluidTankBackground(GuiGraphics graphics, int x, int y) {
-
         int borderWidth = FLUID_TANK_WIDTH + 2;
         int borderHeight = FLUID_TANK_HEIGHT + 2;
         graphics.fill(x, y, x + borderWidth, y + borderHeight, 0xFF373737);

@@ -1,22 +1,24 @@
 package com.upo.createnetherindustry.content.recipes;
 
 import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
+import java.util.function.Supplier;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
-public class CNIRecipeTypeInfo<T extends Recipe<?>> implements IRecipeTypeInfo {
-    private final DeferredHolder<RecipeSerializer<?>, ? extends RecipeSerializer<? extends T>> serializer;
-    private final DeferredHolder<RecipeType<?>, ? extends RecipeType<T>> type;
+public class CNIRecipeTypeInfo<R extends Recipe<?>> implements IRecipeTypeInfo {
 
-    public CNIRecipeTypeInfo(
-            DeferredHolder<RecipeSerializer<?>, ? extends RecipeSerializer<? extends T>> serializer,
-            DeferredHolder<RecipeType<?>, ? extends RecipeType<T>> type
-    ) {
-        this.serializer = serializer;
-        this.type = type;
+    private final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<R>> serializer;
+    private final DeferredHolder<RecipeType<?>, RecipeType<R>> type;
+
+    public CNIRecipeTypeInfo(String name, Supplier<? extends RecipeSerializer<R>> serializerSupplier,
+                             DeferredRegister<RecipeSerializer<?>> serializerRegister,
+                             DeferredRegister<RecipeType<?>> typeRegister) {
+        this.serializer = serializerRegister.register(name, serializerSupplier);
+        this.type = typeRegister.register(name, () -> RecipeType.simple(this.serializer.getId()));
     }
 
     @Override
@@ -25,16 +27,13 @@ public class CNIRecipeTypeInfo<T extends Recipe<?>> implements IRecipeTypeInfo {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
-    public RecipeSerializer<T> getSerializer() {
-        return (RecipeSerializer<T>) serializer.get();
+    public RecipeSerializer<R> getSerializer() {
+        return serializer.get();
     }
 
     @Override
-    @SuppressWarnings("unchecked")
-    public RecipeType<T> getType() {
-        return (RecipeType<T>) type.get();
+    public RecipeType<R> getType() {
+        return type.get();
     }
-
 }
 

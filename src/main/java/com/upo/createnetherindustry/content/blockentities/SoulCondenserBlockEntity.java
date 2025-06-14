@@ -6,8 +6,9 @@ import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import com.simibubi.create.foundation.blockEntity.behaviour.fluid.SmartFluidTankBehaviour;
 import com.simibubi.create.foundation.fluid.SmartFluidTank;
-import com.upo.createnetherindustry.content.recipes.condenser.CondenserRecipeType;
+import com.upo.createnetherindustry.content.recipes.condenser.CondensingRecipe;
 import com.upo.createnetherindustry.content.recipes.condenser.ICondensingRecipe;
+import com.upo.createnetherindustry.registry.CNIRecipes;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -38,7 +39,7 @@ public class SoulCondenserBlockEntity extends KineticBlockEntity implements IHav
     private int progress = 0;
 
     @Nullable
-    private RecipeHolder<ICondensingRecipe> currentActiveRecipeHolder = null;
+    private RecipeHolder<CondensingRecipe> currentActiveRecipeHolder = null;
     private int currentRecipeProcessingTime = 0;
 
     public SoulCondenserBlockEntity(BlockEntityType<?> typeIn, BlockPos pos, BlockState state) {
@@ -132,20 +133,20 @@ public class SoulCondenserBlockEntity extends KineticBlockEntity implements IHav
         if (inputInTank.isEmpty()) return false;
 
         RecipeManager recipeManager = this.level.getRecipeManager();
-        Optional<RecipeHolder<ICondensingRecipe>> recipeHolderOpt = recipeManager
-                .getAllRecipesFor(CondenserRecipeType.SOUL_CONDENSING_RECIPE_TYPE_DEFERRED.get())
+        Optional<RecipeHolder<CondensingRecipe>> recipeHolderOpt = recipeManager
+                .getAllRecipesFor(CNIRecipes.CONDENSING_TYPE_INFO.getType())
                 .stream()
                 .filter(holder -> matchRecipeInput(holder.value(), inputInTank))
                 .findFirst();
 
         if (recipeHolderOpt.isPresent()) {
-            RecipeHolder<ICondensingRecipe> holder = recipeHolderOpt.get();
-            ICondensingRecipe recipe = holder.value();
+            RecipeHolder<CondensingRecipe> holder = recipeHolderOpt.get();
+            CondensingRecipe recipe = holder.value();
             FluidStack recipeOutputFluid = recipe.getOutputFluid();
             FluidStack recipeInputToConsume = recipe.getInputFluid();
             SmartFluidTank outputTank = this.outputTankBehaviour.getPrimaryHandler();
 
-            if ((outputTank.getFluid().isEmpty() || outputTank.getFluid().getFluid().isSame(recipeOutputFluid.getFluid())) &&
+            if ((outputTank.getFluid().isEmpty() || outputTank.getFluid().equals(recipeOutputFluid)) &&
                     outputTank.getSpace() >= recipeOutputFluid.getAmount()) {
 
                 this.currentActiveRecipeHolder = holder;
@@ -229,11 +230,11 @@ public class SoulCondenserBlockEntity extends KineticBlockEntity implements IHav
                 ResourceLocation recipeId = ResourceLocation.tryParse(nbt.getString("ActiveRecipeId"));
                 if (recipeId != null) {
                     Optional<? extends RecipeHolder<?>> recipeOpt = this.level.getRecipeManager().byKey(recipeId);
-                    if (recipeOpt.isPresent() && recipeOpt.get().value() instanceof ICondensingRecipe recipeValue) {
+                    if (recipeOpt.isPresent() && recipeOpt.get().value() instanceof CondensingRecipe recipeValue) {
                         this.currentActiveRecipeHolder = new RecipeHolder<>(recipeId, recipeValue);
                         if (this.currentRecipeProcessingTime <= 0) {
                             this.currentRecipeProcessingTime = recipeValue.getProcessingDuration();
-                            if(this.currentRecipeProcessingTime <=0) this.currentRecipeProcessingTime = DEFAULT_PROCESSING_TIME_FALLBACK;
+                            if(this.currentRecipeProcessingTime <= 0) this.currentRecipeProcessingTime = DEFAULT_PROCESSING_TIME_FALLBACK;
                         }
                     } else {
                         this.progress = 0;
@@ -279,7 +280,7 @@ public class SoulCondenserBlockEntity extends KineticBlockEntity implements IHav
         float speed = Math.abs(getSpeed());
         CreateLang.translate("tooltip.speed", String.format("%.1f", speed) + " RPM")
                 .style(speed > 0 ? ChatFormatting.GREEN : ChatFormatting.DARK_GRAY)
-                .forGoggles(tooltip, 1); // 缩进1层
+                .forGoggles(tooltip, 1);
 
         if (level != null && getBlockState().getBlockHolder().isBound()) {
             double baseStressImpact = BlockStressValues.getImpact(getBlockState().getBlock());
@@ -314,7 +315,7 @@ public class SoulCondenserBlockEntity extends KineticBlockEntity implements IHav
                         .style(ChatFormatting.RED)
                         .forGoggles(tooltip, 1);
             }
-        } else { // 速度为0
+        } else {
             CreateLang.translate("goggle.soul_condenser.status.stopped")
                     .style(ChatFormatting.RED)
                     .forGoggles(tooltip, 1);
@@ -362,7 +363,7 @@ public class SoulCondenserBlockEntity extends KineticBlockEntity implements IHav
 
         RecipeManager recipeManager = level.getRecipeManager();
         return recipeManager
-                .getAllRecipesFor(CondenserRecipeType.SOUL_CONDENSING_RECIPE_TYPE_DEFERRED.get())
+                .getAllRecipesFor(CNIRecipes.CONDENSING_TYPE_INFO.getType())
                 .stream()
                 .anyMatch(holder -> {
                     ICondensingRecipe recipe = holder.value();

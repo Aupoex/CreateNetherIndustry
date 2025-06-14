@@ -10,7 +10,7 @@ import com.simibubi.create.compat.jei.EmptyBackground;
 import com.simibubi.create.compat.jei.category.ProcessingViaFanCategory;
 import com.simibubi.create.compat.jei.category.animations.AnimatedKinetics;
 import com.upo.createnetherindustry.CreateNetherIndustry;
-import com.upo.createnetherindustry.content.recipes.SoulStrippingRecipe;
+import com.upo.createnetherindustry.content.recipes.soulstrip.SoulStrippingRecipe;
 import com.upo.createnetherindustry.registry.CNIRecipes;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
@@ -29,11 +29,8 @@ import java.util.function.Supplier;
 
 public class SoulStrippingCategory extends ProcessingViaFanCategory<SoulStrippingRecipe> {
 
-    public static final RecipeType<SoulStrippingRecipe> TYPE =
-            new RecipeType<>(
-                    CreateNetherIndustry.asResource("soul_stripping"),
-                    SoulStrippingRecipe.class
-            );
+    public static final RecipeType<RecipeHolder<SoulStrippingRecipe>> TYPE =
+            RecipeType.createRecipeHolderType(CreateNetherIndustry.asResource("soul_stripping"));
 
     public SoulStrippingCategory(Info<SoulStrippingRecipe> info) {
         super(info);
@@ -42,18 +39,15 @@ public class SoulStrippingCategory extends ProcessingViaFanCategory<SoulStrippin
     public static SoulStrippingCategory create(IGuiHelper guiHelper) {
         Component title = Component.translatable("recipe.createnetherindustry.soul_stripping");
         IDrawable background = new EmptyBackground(178, 72);
-
         IDrawable icon = new DoubleItemIcon(
                 () -> AllItems.PROPELLER.asStack(),
                 () -> new ItemStack(CNIBlocks.SOUL_STRIPPING_MEDIUM.get())
         );
-
         Supplier<ItemStack> catalystStackSupplier = () -> {
             ItemStack stack = AllBlocks.ENCASED_FAN.asStack();
             stack.set(DataComponents.CUSTOM_NAME, Component.translatable("recipe.createnetherindustry.soul_stripping.fan").withStyle(style -> style.withItalic(false)));
             return stack;
         };
-
         Info<SoulStrippingRecipe> info = new Info<>(
                 TYPE,
                 title,
@@ -66,16 +60,14 @@ public class SoulStrippingCategory extends ProcessingViaFanCategory<SoulStrippin
     }
 
     private static List<RecipeHolder<SoulStrippingRecipe>> getAllRecipes() {
-
-        return CNIJEIPlugin.getRecipeManager().getAllRecipesFor(CNIRecipes.SOUL_STRIPPING_TYPE.get());
+        return CNIJEIPlugin.getRecipeManager().getAllRecipesFor(CNIRecipes.SOUL_STRIPPING_TYPE_INFO.getType());
     }
 
+
     @Override
-    public void draw(SoulStrippingRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics graphics, double mouseX, double mouseY) {
-        renderWidgets(graphics, recipe, mouseX, mouseY);
-
+    public void draw(RecipeHolder<SoulStrippingRecipe> recipeHolder, IRecipeSlotsView recipeSlotsView, GuiGraphics graphics, double mouseX, double mouseY) {
+        renderWidgets(graphics, recipeHolder.value(), mouseX, mouseY);
         PoseStack matrixStack = graphics.pose();
-
         matrixStack.pushPose();
         translateFan(matrixStack);
         matrixStack.mulPose(Axis.XP.rotationDegrees(-12.5f));
@@ -100,7 +92,6 @@ public class SoulStrippingCategory extends ProcessingViaFanCategory<SoulStrippin
 
         matrixStack.popPose();
     }
-
 
     @Override
     @Deprecated
