@@ -108,6 +108,11 @@ public class CNIJEIPlugin implements IModPlugin{
             Component wither_rose_description_alt2 = Component.translatable("jei.createnetherindustry.info.wither_rose.line2");
             registration.addItemStackInfo(witherRoseItemStack, wither_rose_description_alt1, wither_rose_description_alt2);
         }
+        ItemStack lavaSpeedboatItemStack = new ItemStack(CNIItems.LAVA_SPEEDBOAT.get());
+        if (!lavaSpeedboatItemStack.isEmpty()) {
+            Component lava_speedboat_description_alt1 = Component.translatable("jei.createnetherindustry.info.lava_speedboat.line1");
+            registration.addItemStackInfo(lavaSpeedboatItemStack, lava_speedboat_description_alt1);
+        }
     }
 
     @Override

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "create:sturdy_sheet"
+    },
+    "H": {
+      "item": "create:brass_block"
+    },
+    "J": {
+      "item": "create:precision_mechanism"
+    },
+    "K": {
+      "item": "create:brass_casing"
+    }
+  },
+  "pattern": [
+    "J  ",
+    "HKK",
+    "HBB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "createnetherindustry:lava_speedboat"
+  }
+}

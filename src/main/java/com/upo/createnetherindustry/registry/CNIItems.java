@@ -72,6 +72,15 @@ public class CNIItems {
                     .fireResistant()
             )
             .register();
+    public static final ItemEntry<LavaSpeedboatItem> LAVA_SPEEDBOAT = REGISTRATE
+            .item("lava_speedboat", LavaSpeedboatItem::new)
+            .lang("熔岩海快艇")
+            .properties(p -> p
+                    .stacksTo(1)
+                    .rarity(Rarity.RARE)
+                    .fireResistant()
+            )
+            .register();
 
 
 

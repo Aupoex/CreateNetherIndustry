@@ -188,6 +188,20 @@ public class CNIRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_gold_ingot", has(GOLD_INGOT))
                 .unlockedBy("has_amethyst_shard", has(AMETHYST_SHARD))
                 .save(recipeOutput,ResourceLocation.fromNamespaceAndPath(CreateNetherIndustry.MODID, "crafting/soul_blaze_axe"));
+        //岩浆快艇
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, LAVA_SPEEDBOAT)
+                .pattern("J  ")
+                .pattern("HKK")
+                .pattern("HBB")
+                .define('J', PRECISION_MECHANISM)
+                .define('H', BRASS_BLOCK)
+                .define('K', BRASS_CASING)
+                .define('B', STURDY_SHEET)
+                .unlockedBy("has_precision_mechanism", has(PRECISION_MECHANISM))
+                .unlockedBy("has_sturdy_sheet", has(STURDY_SHEET))
+                .unlockedBy("has_brass_block", has(BRASS_BLOCK))
+                .unlockedBy("has_brass_casing", has(BRASS_CASING))
+                .save(recipeOutput,ResourceLocation.fromNamespaceAndPath(CreateNetherIndustry.MODID, "crafting/lava_speedboat"));
 
         //————————注液————————
         //稀薄魂灵瓶

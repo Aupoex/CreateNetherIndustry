@@ -28,6 +28,8 @@
   "item.createnetherindustry.mysterious_ancient_mechanism": "神秘构件",
   "item.createnetherindustry.blaze_twig": "烈焰枝条",
   "item.createnetherindustry.obsession_snow": "雪中执念",
+  "item.createnetherindustry.lava_speedboat": "岩浆快艇",
+  "entity.createnetherindustry.lava_speedboat": "岩浆快艇",
 
   "create.goggle.stress_consumption": "当前应力消耗: %s SU",
   "create.goggle.soul_condenser.title": "魂灵凝集器 状态",
@@ -72,5 +74,6 @@
   "jei.createnetherindustry.info.golden_carrot.line1": "现在可以种植在任意菌岩耕地上。",
   "jei.createnetherindustry.info.golden_carrot.line2": "使用锄头右键任意菌岩，并用熔岩灌溉。",
   "jei.createnetherindustry.info.wither_rose.line1": "现在可以种植在诡异菌岩耕地上。",
-  "jei.createnetherindustry.info.wither_rose.line2": "使用锄头右键诡异菌岩，并用熔岩灌溉。与骷髅头颅一起搅拌得到凋零骷髅头颅。"
+  "jei.createnetherindustry.info.wither_rose.line2": "使用锄头右键诡异菌岩，并用熔岩灌溉。与骷髅头颅一起搅拌得到凋零骷髅头颅。",
+  "jei.createnetherindustry.info.lava_speedboat.line1": "用于在熔岩海上旅行的交通工具，不会被火破坏。"
 }
