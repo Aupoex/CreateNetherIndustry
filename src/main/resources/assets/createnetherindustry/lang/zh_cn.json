@@ -29,6 +29,7 @@
   "item.createnetherindustry.blaze_twig": "烈焰枝条",
   "item.createnetherindustry.obsession_snow": "雪中执念",
   "item.createnetherindustry.lava_speedboat": "岩浆快艇",
+  "item.createnetherindustry.fools_gold": "愚人金",
   "entity.createnetherindustry.lava_speedboat": "岩浆快艇",
 
   "create.goggle.stress_consumption": "当前应力消耗: %s SU",
@@ -75,5 +76,6 @@
   "jei.createnetherindustry.info.golden_carrot.line2": "使用锄头右键任意菌岩，并用熔岩灌溉。",
   "jei.createnetherindustry.info.wither_rose.line1": "现在可以种植在诡异菌岩耕地上。",
   "jei.createnetherindustry.info.wither_rose.line2": "使用锄头右键诡异菌岩，并用熔岩灌溉。与骷髅头颅一起搅拌得到凋零骷髅头颅。",
-  "jei.createnetherindustry.info.lava_speedboat.line1": "用于在熔岩海上旅行的交通工具，不会被火破坏。"
+  "jei.createnetherindustry.info.lava_speedboat.line1": "用于在熔岩海上旅行的交通工具，不会被火破坏。",
+  "jei.createnetherindustry.info.fools_gold.line1": "形似黄金的矿物，猪灵也不能准确辨别。"
 }

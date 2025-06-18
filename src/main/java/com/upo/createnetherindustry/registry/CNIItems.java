@@ -81,6 +81,12 @@ public class CNIItems {
                     .fireResistant()
             )
             .register();
+    public static final ItemEntry<FoolsGoldItem> FOOLS_GOLD = REGISTRATE
+            .item("fools_gold", FoolsGoldItem::new)
+            .lang("愚人金")
+            .properties(p -> p
+            )
+            .register();
 
 
 

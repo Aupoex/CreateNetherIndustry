@@ -56,6 +56,8 @@ public class LavaSpeedboatRenderer extends EntityRenderer<LavaSpeedboatEntity> {
 
         this.model.renderToBuffer(poseStack, vertexconsumer, packedLight, OverlayTexture.NO_OVERLAY, -1);
 
+        poseStack.popPose();
+
         super.render(entity, entityYaw, partialTicks, poseStack, buffer, packedLight);
     }
 

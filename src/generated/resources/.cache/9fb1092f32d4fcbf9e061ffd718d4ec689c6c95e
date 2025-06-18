@@ -1,4 +1,4 @@
-// 1.21.1	2025-06-17T01:15:46.0361093	Recipes
+// 1.21.1	2025-06-18T19:52:02.8906992	Recipes
 d16a6fae07c617e63b9252d1a00b1fc5616a3527 data/createnetherindustry/advancement/recipes/misc/crafting/blaze_powder_from_fruit.json
 0f88d3a10ac9dbe358902d114e03642188be4981 data/createnetherindustry/advancement/recipes/misc/crafting/blaze_twig.json
 24c2c09c9da03affefc336513ddb86838d8c8335 data/createnetherindustry/advancement/recipes/misc/crafting/lava_speedboat.json
@@ -19,6 +19,7 @@ c26a8c1d54b288ec6f56f9d88a3dfe869942abb0 data/createnetherindustry/recipe/fillin
 c17eea5e3e370f2fea4758e22e05ce03c2d61d76 data/createnetherindustry/recipe/filling/soul_bottle_from_thick_soul_syrup.json
 9ef963583989b7eac97fc4a1a55596e14df3606e data/createnetherindustry/recipe/filling/soul_bottle_from_thin_soul_fluid.json
 1e4892a64c5f9c4d40e48d1677b3d022d9f84cc6 data/createnetherindustry/recipe/milling/blaze_fruit_to_blaze_powder.json
+97fb20e1b823724606e449e30a0bd90032481422 data/createnetherindustry/recipe/mixing/fools_gold.json
 8553b7f1544ca69ed2ef3c0debbc9ffc7b1a3893 data/createnetherindustry/recipe/mixing/skeleton_to_wither_skeleton_skull.json
 0afd2454209a4a0869c8a88e5f53c09560dd69fb data/createnetherindustry/recipe/sequenced_assembly/sequenced_ancient_mechanism.json
 a30684a6492e14928fbf5d7f968a836a492e5e1a data/createnetherindustry/recipe/sequenced_assembly/sequenced_blaze_rod.json

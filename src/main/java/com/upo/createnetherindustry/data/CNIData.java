@@ -30,8 +30,9 @@ public class CNIData {
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
 
-        CNITagsProvider blockTagProvider = new CNITagsProvider(packOutput, lookupProvider, existingFileHelper);
+        CNIBlockTagsProvider blockTagProvider = new CNIBlockTagsProvider(packOutput, lookupProvider, existingFileHelper);
         generator.addProvider(event.includeServer(), blockTagProvider);
+        generator.addProvider(event.includeServer(), new CNIItemTagsProvider(packOutput, lookupProvider, blockTagProvider.contentsGetter(), existingFileHelper));
         generator.addProvider(event.includeServer(), new CNIRecipeProvider(packOutput, lookupProvider));
     }
 }

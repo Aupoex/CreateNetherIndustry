@@ -251,6 +251,14 @@ public class CNIRecipeProvider extends RecipeProvider {
                 .output(WITHER_SKELETON_SKULL)
                 .requiresHeat(HeatCondition.SUPERHEATED)
                 .build(recipeOutput);
+        //愚人金
+        new StandardProcessingRecipe.Builder<>(MixingRecipe::new,
+                ResourceLocation.fromNamespaceAndPath(CreateNetherIndustry.MODID, "fools_gold"))
+                .require(IRON_NUGGET).require(IRON_NUGGET)
+                .require(CINDER_FLOUR)
+                .output(FOOLS_GOLD)
+                .requiresHeat(HeatCondition.HEATED)
+                .build(recipeOutput);
 
         //——————研磨————————
         //烈焰果实

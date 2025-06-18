@@ -29,6 +29,7 @@
   "item.createnetherindustry.blaze_twig": "Blaze Twig",
   "item.createnetherindustry.obsession_snow": "Snowbound Obsession",
   "item.createnetherindustry.lava_speedboat": "Lava Speedboat",
+  "item.createnetherindustry.fools_gold": "Fool's Gold",
   "entity.createnetherindustry.lava_speedboat": "Lava Speedboat",
 
   "create.goggle.stress_consumption": "Current Stress Usage: %s SU",
@@ -75,5 +76,6 @@
   "jei.createnetherindustry.info.golden_carrot.line2": "Use a hoe on any Nylium and irrigate with lava.",
   "jei.createnetherindustry.info.wither_rose.line1": "Can now be planted on Warped Nylium Farmland.",
   "jei.createnetherindustry.info.wither_rose.line2": "Use a hoe on Warped Nylium and irrigate with lava. Mix with Skeleton Skulls to obtain Wither Skeleton Skulls.",
-  "jei.createnetherindustry.info.lava_speedboat.line1": "Vehicle used to travel on the lava sea without being destroyed by fire."
+  "jei.createnetherindustry.info.lava_speedboat.line1": "Vehicle used to travel on the lava sea without being destroyed by fire.",
+  "jei.createnetherindustry.info.fools_gold.line1": "Minerals looks like gold cannot be accurately identified by Piglins."
 }

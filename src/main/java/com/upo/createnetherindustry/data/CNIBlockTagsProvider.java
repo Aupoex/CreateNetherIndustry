@@ -11,10 +11,10 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import javax.annotation.Nullable;
 import java.util.concurrent.CompletableFuture;
 
-public class CNITagsProvider extends BlockTagsProvider {
+public class CNIBlockTagsProvider extends BlockTagsProvider {
 
-    public CNITagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider,
-                           @Nullable ExistingFileHelper existingFileHelper) {
+    public CNIBlockTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider,
+                                @Nullable ExistingFileHelper existingFileHelper) {
         super(output, lookupProvider, CreateNetherIndustry.MODID, existingFileHelper);
     }
 
@@ -37,6 +37,7 @@ public class CNITagsProvider extends BlockTagsProvider {
                      CNIBlocks.WARPED_NYLIUM_FARMLAND.get(),
                      CNIBlocks.SOUL_STRIPPING_MEDIUM.get()
                 );
+
 
     }
 

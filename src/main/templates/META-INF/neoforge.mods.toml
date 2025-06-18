@@ -37,4 +37,5 @@ logoFile="icon.png"
     versionRange="[6.0.6,6.1.0)"
     ordering="NONE"
     side="BOTH"
-
+#[[mixins]]
+#config="createnetherindustry.mixins.json"
